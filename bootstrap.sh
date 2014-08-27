@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
 apt-get update
-apt-get install openjdk-7-jdk -y
+
+echo "---"
+echo "Installing Oracle Java 7..." 
+# http://stackoverflow.com/questions/16263556/installing-java-7-on-ubuntu
+# http://stackoverflow.com/questions/19275856/auto-yes-to-the-license-agreement-on-sudo-apt-get-y-install-oracle-java7-instal
+apt-get install python-software-properties -y
+add-apt-repository ppa:webupd8team/java -y
+apt-get update
+echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+apt-get install oracle-java7-installer -y
+apt-get install oracle-java7-set-default -y
+java -version
 
 echo "Installing logstash..."
 wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
