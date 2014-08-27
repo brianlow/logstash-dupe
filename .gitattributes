@@ -1,0 +1,3 @@
+# Do not do end of line conversion (CRLF<>LF) unix files meant for the VM
+*.sh -text
+logstash*.expected -text
