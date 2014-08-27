@@ -5,9 +5,7 @@ apt-get install openjdk-7-jdk -y
 
 echo "Installing logstash..."
 wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-sh -c 'echo "deb http://packages.elasticsearch.org/logstash/1.4/debian stable main" >> /etc/apt/sources.list'
-apt-get update
-apt-get install logstash -y
+dpkg -i /vagrant/logstash_1.5.0~dev-1-2f12d38_all.deb
 cp /vagrant/logstash.conf /etc/logstash/conf.d/
 echo 'LS_OPTS="--debug"' >> /etc/default/logstash
 
